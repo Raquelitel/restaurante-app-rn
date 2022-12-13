@@ -1,6 +1,6 @@
-import app from 'firebase/compat/app';
-import 'firebase/compat/firestore';
-import 'firebase/compat/storage';
+import app from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
 
 import firebaseConfig from './config';
 

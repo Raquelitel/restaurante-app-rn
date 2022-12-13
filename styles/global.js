@@ -15,6 +15,20 @@ const globalStyles = StyleSheet.create({
         textTransform: "uppercase",
         color: "#000",
         fontWeight: "bold"
+    },
+    title: {
+        textAlign: "center",
+        marginTop: 40,
+        marginBottom: 20,
+    },
+    imagen: {
+        height: 300,
+        width: "100%"
+    },
+    price: {
+        marginVertical: 20,
+        fontSize: 20,
+        fontWeight: "bold"
     }
 })
 

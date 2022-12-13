@@ -4,7 +4,7 @@ import firebase from "../../firebase";
 import FirebaseReducer from "./firebaseReducer";
 import FirebaseContext from "./firebaseContext";
 
-import { OBTENER_PRODUCTOS } from "../../types";
+import { OBTENER_PRODUCTOS_EXISTO } from "../../types";
 
 const FirebaseState = props => {
    
@@ -15,9 +15,7 @@ const FirebaseState = props => {
     const [ state, dispatch ] = useReducer(FirebaseReducer, initialState)
 
     const obtenerProductos = () => {
-       dispatch({
-        type: OBTENER_PRODUCTOS
-       });
+
 
        // consultar firebase
        firebase.db
@@ -26,14 +24,26 @@ const FirebaseState = props => {
         .onSnapshot(handleSnapshot)
 
        function handleSnapshot(snapshot) {
-        console.log(snapshot)
         let plates = snapshot.docs.map( doc => {
             return {
                 id: doc.id,
                 ...doc.data()
             }
         });
-        console.log(plates)
+
+        plates = Array.from(
+            plates.reduce(
+              (m, {categoria, ...data}) =>
+                m.set(categoria, [...(m.get(categoria) || []), data]),
+              new Map(),
+            ),
+            ([categoria, data]) => ({categoria, data}),
+          );
+
+        dispatch({
+            type: OBTENER_PRODUCTOS_EXISTO,
+            payload: plates
+           });
         
        }
     }

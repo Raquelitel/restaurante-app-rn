@@ -30,6 +30,7 @@ const App = () => {
                 headerStyle: {
                   backgroundColor: "#FFDA00"
                 },
+                headerTitleAlign: "center",
                 headerTitleStyle: {
                   fontWeight: "bold"
                 },
@@ -63,7 +64,7 @@ const App = () => {
                 name="DetailPlate"
                 component={DetailPlate}
                 options={{
-                  title: "Detalle Plato"
+                  title: "Detalles"
                 }}
               />
               <Stack.Screen
