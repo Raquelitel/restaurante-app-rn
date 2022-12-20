@@ -7,7 +7,8 @@ import {
     SELECCIONAR_PRODUCTO,
     CONFIRMAR_ORDER_PLATE,
     MOSTRAR_RESUMEN,
-    ELIMINAR_PRODUCTO
+    ELIMINAR_PRODUCTO,
+    PEDIDO_ORDENADO
 } from "../../types"
 
 
@@ -17,7 +18,8 @@ const OrdersState = props => {
         order: [],
         plate: null,
         total: 0,
-        selectionPlate
+        selectionPlate,
+        idorder: ""
     }
 
     const [ state, dispatch ] = useReducer(OrdersReducer, initialState)
@@ -49,6 +51,12 @@ const OrdersState = props => {
             payload: id
         })
     }
+    const handleOrder = id => {
+        dispatch({
+            type: PEDIDO_ORDENADO,
+            payload: id
+        })
+    }
 
     return (
         <OrdersContext.Provider
@@ -56,10 +64,12 @@ const OrdersState = props => {
                 order: state.order,
                 plate: state.plate,
                 total: state.total,
+                idorder: state.idorder,
                 selectionPlate,
                 saveOrder,
                 mostrarResumen,
-                deleteProduct
+                deleteProduct,
+                handleOrder
             }}
         >
             {props.children}

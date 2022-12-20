@@ -3,11 +3,12 @@ import { StyleSheet, Alert, Image, Text } from 'react-native'
 import { Avatar, Box, Button, FlatList, Heading, HStack, NativeBaseProvider, SectionList, VStack } from "native-base"
 
 import { useNavigation } from '@react-navigation/native'
+import firebase from '../firebase'
 import globalStyles from '../styles/global'
 import OrdersContext from '../context/orders/ordersContext'
 
 const ResumeOrder = () => {
-  const { order, total, mostrarResumen, deleteProduct } = useContext(OrdersContext)
+  const { order, total, mostrarResumen, deleteProduct, handleOrder } = useContext(OrdersContext)
 
   const navigation = useNavigation()
 
@@ -27,8 +28,25 @@ const ResumeOrder = () => {
       "Una vez que realices el pedido, no podrás modificarlo",
       [{
         text: "Confirmar",
-        onPress: () => {
-          navigation.navigate("ProgressOrder")
+        onPress: async () => {
+
+          const orderObj = {
+            tiempoentrega: 0,
+            completado: false,
+            total: Number(total),
+            orden: order,
+            creado: Date.now()
+          }
+         
+          try {
+            const order = await firebase.db.collection("ordenes").add(orderObj)
+            handleOrder(order.id);
+            navigation.navigate("ProgressOrder")
+          } catch(error) {
+            console.log(error)
+          }
+
+          
         }
       },
       { text: "Cancelar", style: "cancel" }]
