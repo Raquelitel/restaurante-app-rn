@@ -9,7 +9,7 @@ const globalStyles = StyleSheet.create({
         flex: 1
     },
     boton: {
-        backgroundColor: "#FFDA00"
+        backgroundColor: "#FFDA00",
     },
     botonText: {
         textTransform: "uppercase",
@@ -28,7 +28,8 @@ const globalStyles = StyleSheet.create({
     price: {
         marginVertical: 20,
         fontSize: 20,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        textAlign:"center"
     }
 })
 

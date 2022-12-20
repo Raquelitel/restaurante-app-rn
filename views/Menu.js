@@ -20,6 +20,7 @@ const Menu = () => {
   // Context de firebase
   const { menu, obtenerProductos } = useContext(FirebaseContext)
 
+
   // Context de order
   const { selectionPlate } = useContext(OrdersContext)
 
@@ -36,13 +37,13 @@ const Menu = () => {
       style={globalStyles.container}
     >
       <SectionList
-        w="94%" 
+        w="94%"
         mx={3}
         sections={menu}
         keyExtractor={(item, index) => item + index}
-     renderItem={({item}) => {
-        const { imagen, nombre, descripcion, categoria, precio, id} = item;
-         
+        renderItem={({ item }) => {
+          const { imagen, nombre, descripcion, categoria, precio, id } = item;
+
           return (
             <Pressable
               onPress={() => {

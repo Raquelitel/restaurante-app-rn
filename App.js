@@ -14,6 +14,8 @@ import Menu from "./views/Menu"
 import NewOrder from "./views/NewOrder"
 import ProgressOrder from "./views/ProgressOrder"
 import ResumeOrder from "./views/ResumeOrder"
+import BotonResumen from './components/UI/BotonResumen';
+import { Button } from 'native-base';
 
 
 const Stack = createStackNavigator();
@@ -34,7 +36,9 @@ const App = () => {
                 headerTitleStyle: {
                   fontWeight: "bold"
                 },
-                headerTintColor: "#000"
+                headerTintColor: "#000",
+                headerRight: () => (<BotonResumen/>)
+                
               }}
             >
               <Stack.Screen
@@ -49,7 +53,7 @@ const App = () => {
                 name="Menu"
                 component={Menu}
                 options={{
-                  title: "Menú"
+                  title: "Menú",                
                 }}
               />
 
@@ -78,7 +82,7 @@ const App = () => {
                 name="ResumeOrder"
                 component={ResumeOrder}
                 options={{
-                  title: "Resumen del pedido"
+                  title: "Resumen"
                 }}
               />
             </Stack.Navigator>
