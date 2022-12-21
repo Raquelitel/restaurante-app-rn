@@ -15,7 +15,7 @@ import NewOrder from "./views/NewOrder"
 import ProgressOrder from "./views/ProgressOrder"
 import ResumeOrder from "./views/ResumeOrder"
 import BotonResumen from './components/UI/BotonResumen';
-import { Button } from 'native-base';
+
 
 
 const Stack = createStackNavigator();
@@ -61,7 +61,7 @@ const App = () => {
                 name="FormPlate"
                 component={FormPlate}
                 options={{
-                  title: "Formulario"
+                  title: ""
                 }}
               />
               <Stack.Screen

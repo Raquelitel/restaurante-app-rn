@@ -3,13 +3,10 @@ import { Alert, StyleSheet } from 'react-native'
 import {
   NativeBaseProvider,
   FormControl,
-  Stack,
   Button,
   Box,
   Text,
   Input,
-  View,
-  VStack,
   Heading,
   HStack
 } from "native-base"
@@ -84,12 +81,13 @@ const FormPlate = () => {
       <Box style={globalStyles.container}>
         <FormControl>
           <Heading style={globalStyles.title}>Cantidad</Heading>
-          <HStack justifyContent="space-around">
+          <HStack justifyContent="space-between">
 
             <IconRemove.Button
               name="remove"
               style={{ justifyContent: "center" }}
               size={50}
+              width={130}
               onPress={() => handleDecrease()}
             />
 
@@ -105,6 +103,7 @@ const FormPlate = () => {
               name="add"
               style={{ justifyContent: "center" }}
               size={50}
+              width={130}
               onPress={() => handleIncrease()}
             />
 

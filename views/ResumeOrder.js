@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { StyleSheet, Alert, Image, Text } from 'react-native'
-import { Avatar, Box, Button, FlatList, Heading, HStack, NativeBaseProvider, SectionList, VStack } from "native-base"
+import { Box, Button, FlatList, Heading, HStack, NativeBaseProvider, VStack } from "native-base"
 
 import { useNavigation } from '@react-navigation/native'
 import firebase from '../firebase'
@@ -45,12 +45,9 @@ const ResumeOrder = () => {
           } catch(error) {
             console.log(error)
           }
-
-          
         }
       },
       { text: "Cancelar", style: "cancel" }]
-
     )
   }
 
@@ -65,7 +62,6 @@ const ResumeOrder = () => {
         }
       },
       { text: "Cancelar", style: "cancel" }]
-
     )
   }
 
@@ -82,16 +78,17 @@ const ResumeOrder = () => {
               py="2"
               borderColor="muted.400"
             >
-              <HStack space={[2, 3]}>
+              <HStack space={[3]}>
                 <Image style={styles.image} source={{ uri: item.imagen }} />
                 <VStack>
-                  <Text>{item.nombre}</Text>
+                  <Text style={{textTransform: "capitalize"}}>{item.nombre}</Text>
                   <Text>Cantidad: {item.cuantity}</Text>
-                  <Text>Total: {item.precio} €</Text>
+                  <Text>Total: {item.precio * item.cuantity} €</Text>
                   <Button
                   onPress={() => confirmDelete(item.id) }
                     colorScheme="danger"
                     width="full"
+                    mt="1"
                   >
                     <Text style={[globalStyles.botonText, {color: "#FFF"}]}>Eliminar</Text>
                   </Button>
@@ -130,8 +127,11 @@ const ResumeOrder = () => {
 
 const styles = StyleSheet.create({
   image: {
+    marginTop: 10,
+    marginLeft: 20,
     width: 70,
-    height: 70
+    height: 70,
+    borderRadius: 10
   },
   botonFooter: {
     flex: 1,
