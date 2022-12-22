@@ -1,4 +1,4 @@
-# APLICACIÓN WEB - RESTAURANTE
+# APLICACIÓN MÓVIL - RESTAURANTE
 
 ## Tabla de Contenido.
 1. [Descripción](#descripción)
